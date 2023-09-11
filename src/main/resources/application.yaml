@@ -20,7 +20,7 @@ spring:
     username: ${local.db.username}
     password: ${local.db.password}
   flyway:
-    url: jdbc:postgresql://localhost:5433/${local.db.url}
+    url: jdbc:postgresql://${local.db.url}
     locations: classpath:db/migration
     user: ${local.db.username}
     password: ${local.db.password}
