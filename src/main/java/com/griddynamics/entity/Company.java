@@ -20,7 +20,7 @@ import java.io.Serializable;
 public class Company implements Persistable<Integer>, Serializable {
 
     @Serial
-    private static final long serialVersionUID = 1l;
+    private static final long serialVersionUID = 1L;
 
     @Id
     private Integer id;
