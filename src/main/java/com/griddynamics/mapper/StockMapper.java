@@ -7,9 +7,7 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface StockMapper {
-
     StockDto mapToStock(Stock stock);
-
     @InheritInverseConfiguration
     Stock mapToStockDto(StockDto stockDto);
 }
