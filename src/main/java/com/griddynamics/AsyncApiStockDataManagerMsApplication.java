@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class StockInformationApplication {
+public class AsyncApiStockDataManagerMsApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(StockInformationApplication.class, args);
+        SpringApplication.run(AsyncApiStockDataManagerMsApplication.class, args);
     }
 }
