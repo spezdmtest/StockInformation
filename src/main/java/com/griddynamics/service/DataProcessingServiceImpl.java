@@ -1,6 +1,8 @@
 package com.griddynamics.service;
 
 import com.griddynamics.client.ExApiExchangeClientImpl;
+import com.griddynamics.dto.CompanyDto;
+import com.griddynamics.entity.Company;
 import com.griddynamics.mapper.CompanyMapper;
 import com.griddynamics.mapper.StockMapper;
 import com.griddynamics.repository.CustomRepository;
@@ -8,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
@@ -17,7 +20,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class DataProcessingServiceImpl implements DataProcessingService{
+public class DataProcessingServiceImpl implements DataProcessingService {
 
     @Value("${service.number-of-companies}")
     private Integer NUMBER_OF_COMPANIES;
@@ -28,13 +31,41 @@ public class DataProcessingServiceImpl implements DataProcessingService{
     private final CompanyMapper companyMapper;
     private final StockMapper stockMapper;
     private final CustomRepository customRepository;
+
     @Override
     public Mono<Void> processingCompanyData() {
-        return null;
+        tasks.clear();
+        return apiClient.callToCompanyApi()
+                .onErrorContinue((error, obj) -> log.error("error:[{}]", error.getLocalizedMessage()))
+                .filter(CompanyDto::isEnable)
+                .take(NUMBER_OF_COMPANIES)
+                .map(companyMapper::mapToCompanyDto)
+                .map(this::addTask)
+                .map(customRepository::save)
+                .map(Mono::subscribe)
+                .then();
     }
 
     @Override
     public Mono<Void> processingStockData() {
-        return null;
+        return Flux.fromIterable(tasks)
+                .flatMap(s -> apiClient.callToStockApi(getTask()))
+                .onErrorContinue((error, obj) -> log.error("[{}]", error.getLocalizedMessage()))
+                .map(stockMapper::mapToStockDto)
+                .map(customRepository::saveStock)
+                .map(Mono::subscribe)
+                .then();
+    }
+
+    private Company addTask(Company company) {
+        var uri = apiClient.getStockUri(company.getSymbol());
+        tasks.add(uri);
+        return company;
+    }
+
+    private String getTask() {
+        var task = tasks.get(index.getAndIncrement());
+        if (index.get() == NUMBER_OF_COMPANIES) index = new AtomicInteger(0);
+        return task;
     }
 }
