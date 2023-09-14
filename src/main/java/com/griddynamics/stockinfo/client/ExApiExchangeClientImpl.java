@@ -1,7 +1,7 @@
-package com.griddynamics.client;
+package com.griddynamics.stockinfo.client;
 
-import com.griddynamics.dto.CompanyDto;
-import com.griddynamics.dto.StockDto;
+import com.griddynamics.stockinfo.dto.CompanyDto;
+import com.griddynamics.stockinfo.dto.StockDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;

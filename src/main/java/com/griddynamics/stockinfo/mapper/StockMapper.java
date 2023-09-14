@@ -1,7 +1,7 @@
-package com.griddynamics.mapper;
+package com.griddynamics.stockinfo.mapper;
 
-import com.griddynamics.dto.StockDto;
-import com.griddynamics.entity.Stock;
+import com.griddynamics.stockinfo.dto.StockDto;
+import com.griddynamics.stockinfo.entity.Stock;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 

@@ -1,7 +1,7 @@
-package com.griddynamics.repository;
+package com.griddynamics.stockinfo.repository;
 
-import com.griddynamics.entity.Company;
-import com.griddynamics.entity.Stock;
+import com.griddynamics.stockinfo.entity.Company;
+import com.griddynamics.stockinfo.entity.Stock;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Mono;
 

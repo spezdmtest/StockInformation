@@ -1,4 +1,4 @@
-package com.griddynamics.dto;
+package com.griddynamics.stockinfo.dto;
 
 import org.springframework.data.annotation.Id;
 

@@ -1,11 +1,11 @@
-package com.griddynamics.service;
+package com.griddynamics.stockinfo.service;
 
-import com.griddynamics.client.ExApiExchangeClientImpl;
-import com.griddynamics.dto.CompanyDto;
-import com.griddynamics.entity.Company;
-import com.griddynamics.mapper.CompanyMapper;
-import com.griddynamics.mapper.StockMapper;
-import com.griddynamics.repository.CustomRepository;
+import com.griddynamics.stockinfo.client.ExApiExchangeClientImpl;
+import com.griddynamics.stockinfo.dto.CompanyDto;
+import com.griddynamics.stockinfo.entity.Company;
+import com.griddynamics.stockinfo.mapper.CompanyMapper;
+import com.griddynamics.stockinfo.mapper.StockMapper;
+import com.griddynamics.stockinfo.repository.CustomRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;

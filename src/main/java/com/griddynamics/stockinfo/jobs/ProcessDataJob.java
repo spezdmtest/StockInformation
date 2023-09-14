@@ -1,6 +1,6 @@
-package com.griddynamics.jobs;
+package com.griddynamics.stockinfo.jobs;
 
-import com.griddynamics.service.DataProcessingServiceImpl;
+import com.griddynamics.stockinfo.service.DataProcessingServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;

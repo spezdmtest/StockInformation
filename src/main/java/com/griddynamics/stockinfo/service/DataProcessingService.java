@@ -1,4 +1,4 @@
-package com.griddynamics.service;
+package com.griddynamics.stockinfo.service;
 
 import reactor.core.publisher.Mono;
 
