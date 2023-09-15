@@ -27,7 +27,7 @@ public class ProcessDataJob {
                 .join();
     }
 
-//    @Scheduled(fixedDelay = 5000, initialDelay = 3000)
+    @Scheduled(fixedDelay = 5000, initialDelay = 3000)
     public void runProcessingStockDataJob() {
         CompletableFuture.supplyAsync(dataProcessingService::processingStockData, executor)
                 .thenApply(Mono::subscribe)

@@ -37,5 +37,5 @@ api:
     token: pk_ecaab92ac42e40cfb972d8baf553d6cc
 
 service:
-  number-of-companies: 201
+  number-of-companies: 200
 

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.concurrent.CompletableFuture;
 
 @Slf4j
-//@Component
+@Component
 @RequiredArgsConstructor
 public class AnalyticDataJob {
 
