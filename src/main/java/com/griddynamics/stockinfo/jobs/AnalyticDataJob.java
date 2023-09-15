@@ -9,12 +9,11 @@ import org.springframework.stereotype.Component;
 import java.util.concurrent.CompletableFuture;
 
 @Slf4j
-@Component
+//@Component
 @RequiredArgsConstructor
 public class AnalyticDataJob {
 
     private final AnalyticService analyticService;
-
     @Scheduled(fixedDelay = 5000, initialDelay = 5000)
     public void runAnalyticsJob() {
         CompletableFuture.runAsync(() -> {

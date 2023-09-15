@@ -37,7 +37,7 @@ public class DataProcessingServiceImpl implements DataProcessingService {
         tasks.clear();
         return apiClient.callToCompanyApi()
                 .onErrorContinue((error, obj) -> log.error("error:[{}]", error.getLocalizedMessage()))
-                .filter(CompanyDto::isEnable)
+                .filter(CompanyDto::isEnabled)
                 .take(NUMBER_OF_COMPANIES)
                 .map(companyMapper::mapToCompanyDto)
                 .map(this::addTask)
