@@ -1,6 +1,7 @@
 package com.griddynamics.stockinfo.jobs;
 
 import com.griddynamics.stockinfo.service.DataProcessingServiceImpl;
+import com.griddynamics.stockinfo.util.TrackExecutionTime;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -18,7 +19,6 @@ public class ProcessDataJob {
 
     private final DataProcessingServiceImpl dataProcessingService;
     private final ExecutorService executor = Executors.newCachedThreadPool();
-
     @Scheduled(fixedDelay = 3600 * 1000, initialDelay = 100)
     public void runProcessingCompanyDataJob() {
         CompletableFuture.supplyAsync(dataProcessingService::processingCompanyData, executor)
@@ -26,7 +26,7 @@ public class ProcessDataJob {
                 .thenAccept(unused -> log.info("Processing data of companies was finished"))
                 .join();
     }
-
+    @TrackExecutionTime
     @Scheduled(fixedDelay = 5000, initialDelay = 3000)
     public void runProcessingStockDataJob() {
         CompletableFuture.supplyAsync(dataProcessingService::processingStockData, executor)
