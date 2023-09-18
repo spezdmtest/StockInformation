@@ -3,8 +3,8 @@
 #    org:
 #      springframework:
 #        r2dbc: TRACE
-aspect:
-  enabled: true
+#aspect:
+#  enabled: true
 
 local:
   db:
