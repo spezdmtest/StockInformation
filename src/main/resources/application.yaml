@@ -3,8 +3,8 @@
 #    org:
 #      springframework:
 #        r2dbc: TRACE
-#aspect:
-#  enabled: true
+scheduling:
+  enabled: false
 
 local:
   db:
@@ -32,7 +32,7 @@ spring:
 
 api:
   external:
-    ref-data-url: https://api.iex.cloud/v1/data/CORE/REF_DATA?token={token}
+    ref-data-url: https://api.iex.cloud/v1/data/core/ref_data?token={token}
     stock-data-url: https://api.iex.cloud/v1/data/core/quote/{symbol}?token={token}
     token: pk_ecaab92ac42e40cfb972d8baf553d6cc
 
