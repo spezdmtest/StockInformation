@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
-@SpringBootTest()
+@SpringBootTest(properties = "scheduling.enabled=false")
 @TestConfiguration
 public abstract class BaseAbstractTest {
 
