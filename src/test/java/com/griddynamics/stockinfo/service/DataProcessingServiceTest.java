@@ -32,9 +32,9 @@ public class DataProcessingServiceTest extends BaseAbstractTest {
         Company company = new Company(1, "symbol", true);
         Flux<CompanyDto> flux = Flux.just(dto);
         Mono<Company> mono = Mono.just(company);
+
         when(apiClient.callToCompanyApi()).thenReturn(flux);
         when(customRepository.save(any())).thenReturn(mono);
-
         var result = service.processingCompanyData();
 
         result.as(StepVerifier::create).verifyComplete();
@@ -52,9 +52,9 @@ public class DataProcessingServiceTest extends BaseAbstractTest {
                 "Name", true);
         Mono<StockDto> monoDto = Mono.just(dto);
         Mono<Stock> mono = Mono.just(stock);
+
         when(apiClient.callToStockApi(anyString())).thenReturn(monoDto);
         when(customRepository.saveStock(any())).thenReturn(mono);
-
         var result = service.processingStockData();
 
         result.as(StepVerifier::create).verifyComplete();

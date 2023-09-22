@@ -51,6 +51,7 @@ public class JobsTest extends BaseAbstractTest {
     public void callOnStartupTest() {
         when(dataProcessingService.processingCompanyData()).thenReturn(Mono.empty());
         processingDataJob.runProcessingCompanyDataJob();
+
         verify(dataProcessingService, atLeastOnce()).processingCompanyData();
     }
 
@@ -58,12 +59,14 @@ public class JobsTest extends BaseAbstractTest {
     public void callGetStockDataTest() {
         when(dataProcessingService.processingStockData()).thenReturn(Mono.empty());
         processingDataJob.runProcessingStockDataJob();
+
         verify(dataProcessingService, atLeastOnce()).processingStockData();
     }
 
     @Test
     public void callGetAnalyticDataTest() {
         analyticDataJob.runAnalyticsJob();
+
         verify(analyticService, atLeastOnce()).getTopFiveStockPrice();
         verify(analyticService, atLeastOnce()).getTopFiveDeltaStocksPrice();
     }
