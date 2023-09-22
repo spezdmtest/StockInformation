@@ -60,7 +60,6 @@ public class ExApiExchangeClientImplTest extends BaseAbstractTest {
         when(requestHeadersUriSpec.uri(service.getCompanyUri())).thenReturn(requestHeadersSpec);
         when(requestHeadersSpec.retrieve()).thenReturn(responseSpec);
         when(responseSpec.bodyToFlux(CompanyDto.class)).thenReturn(expected);
-
         var actual = service.callToCompanyApi();
 
         Assertions.assertEquals(expected, actual);
@@ -69,7 +68,7 @@ public class ExApiExchangeClientImplTest extends BaseAbstractTest {
     @Test
     void whenCallToStockApiSuccessful() {
         var uri = service.getStockUri("A");
-        var stockDto = new StockDto(1l, "symbol", BigDecimal.TEN, BigDecimal.ONE, 5,
+        var stockDto = new StockDto(1L, "symbol", BigDecimal.TEN, BigDecimal.ONE, 5,
                 null, "Name");
         var arrayStockDtos = new StockDto[]{stockDto};
         var mono = Mono.just(arrayStockDtos);
@@ -79,7 +78,6 @@ public class ExApiExchangeClientImplTest extends BaseAbstractTest {
         when(requestHeadersUriSpec.uri(uri)).thenReturn(requestHeadersSpec);
         when(requestHeadersSpec.retrieve()).thenReturn(responseSpec);
         when(responseSpec.bodyToMono(StockDto[].class)).thenReturn(mono);
-
         var actual = service.callToStockApi(uri);
 
         Assertions.assertEquals(expected, actual.block());
