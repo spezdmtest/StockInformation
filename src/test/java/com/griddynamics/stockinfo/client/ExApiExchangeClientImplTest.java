@@ -62,6 +62,7 @@ public class ExApiExchangeClientImplTest extends BaseAbstractTest {
         when(responseSpec.bodyToFlux(CompanyDto.class)).thenReturn(expected);
 
         var actual = service.callToCompanyApi();
+
         Assertions.assertEquals(expected, actual);
     }
 
@@ -78,7 +79,9 @@ public class ExApiExchangeClientImplTest extends BaseAbstractTest {
         when(requestHeadersUriSpec.uri(uri)).thenReturn(requestHeadersSpec);
         when(requestHeadersSpec.retrieve()).thenReturn(responseSpec);
         when(responseSpec.bodyToMono(StockDto[].class)).thenReturn(mono);
+
         var actual = service.callToStockApi(uri);
+
         Assertions.assertEquals(expected, actual.block());
     }
 }

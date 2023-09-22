@@ -1,6 +1,6 @@
 package com.griddynamics.stockinfo.jobs;
 
-import com.griddynamics.stockinfo.service.DataProcessingServiceImpl;
+import com.griddynamics.stockinfo.service.DataProcessingService;
 import com.griddynamics.stockinfo.util.TrackExecutionTime;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +17,7 @@ import java.util.concurrent.Executors;
 @RequiredArgsConstructor
 public class ProcessDataJob {
 
-    private final DataProcessingServiceImpl dataProcessingService;
+    private final DataProcessingService dataProcessingService;
     private final ExecutorService executor = Executors.newCachedThreadPool();
     @Scheduled(fixedDelay = 3600 * 1000, initialDelay = 100)
     public void runProcessingCompanyDataJob() {
