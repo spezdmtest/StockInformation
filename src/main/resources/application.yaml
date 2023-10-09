@@ -3,8 +3,8 @@
 #    org:
 #      springframework:
 #        r2dbc: TRACE
-#scheduling:
-#  enabled: false
+scheduling:
+  enabled: false
 
 local:
   db:
