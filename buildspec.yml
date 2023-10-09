@@ -6,7 +6,7 @@ phases:
     runtime-versions:
       java: corretto17
     commands:
-      - echo Installing necessary library:
+      - echo Installing necessary library.....
       - curl -Lo aws-iam-authenticator https://github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/v0.5.9/aws-iam-authenticator_0.5.9_linux_amd64
       - curl -sS -o kubectl https://s3.us-west-2.amazonaws.com/amazon-eks/1.27.4/2023-08-16/bin/linux/amd64/kubectl
       - chmod +x ./kubectl ./aws-iam-authenticator
