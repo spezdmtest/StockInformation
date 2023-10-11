@@ -16,3 +16,7 @@ phases:
 cache:
   paths:
     - '/root/.m2/**/*'
+
+artifacts:
+  files:
+    - deployment/*
