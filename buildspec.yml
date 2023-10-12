@@ -30,11 +30,12 @@ post_build:
   commands:
     - echo Pushing the Docker image...
     - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
-
+    - echo Getting AWS Identity...
+    - aws sts get-caller-identity
 cache:
   paths:
     - '/root/.m2/**/*'
 
-#artifacts:
-#  files:
-#    - deployment/*
+artifacts:
+  files:
+    - deployment/*
