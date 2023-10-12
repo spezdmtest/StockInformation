@@ -44,8 +44,6 @@ post_build:
     - echo IMAGE_TAG: $IMAGE_TAG
     - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
     - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$COMMIT_ID
-    - echo Getting AWS Identity...
-    - aws sts get-caller-identity
 cache:
   paths:
     - '/root/.m2/**/*'
