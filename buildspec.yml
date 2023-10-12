@@ -35,6 +35,6 @@ cache:
   paths:
     - '/root/.m2/**/*'
 
-artifacts:
-  files:
-    - deployment/*
+#artifacts:
+#  files:
+#    - deployment/*
