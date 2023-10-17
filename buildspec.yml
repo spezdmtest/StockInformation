@@ -1,11 +1,11 @@
 version: 0.2
 
-#env:
-#  variables:
-#    AWS_DEFAULT_REGION: "eu-central-1"
-#    AWS_ACCOUNT_ID: "227656652879"
-#    IMAGE_REPO_NAME: "stockinfo"
-#    IMAGE_TAG: "latest"
+env:
+  variables:
+    AWS_DEFAULT_REGION: "eu-central-1"
+    AWS_ACCOUNT_ID: "227656652879"
+    IMAGE_REPO_NAME: "stockinfo"
+    IMAGE_TAG: "latest"
 
 phases:
   # steps:
