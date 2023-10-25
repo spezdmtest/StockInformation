@@ -1,11 +1,11 @@
 version: 0.2
 
-#env:
-#  variables:
-#    AWS_DEFAULT_REGION: "eu-central-1"
-#    AWS_ACCOUNT_ID: "227656652879"
-#    IMAGE_REPO_NAME: "stockinfo"
-#    IMAGE_TAG: "latest"
+env:
+  variables:
+    AWS_DEFAULT_REGION: "eu-central-1"
+    AWS_ACCOUNT_ID: "636970537472"
+    IMAGE_REPO_NAME: "stockinfo"
+    IMAGE_TAG: "latest"
 
 phases:
   # steps:
@@ -23,8 +23,8 @@ phases:
 pre_build:
   commands:
     - echo Logging in to Amazon ECR...
-#    - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
-#    - COMMIT_ID=$(git rev-parse --short HEAD)
+    - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+    - COMMIT_ID=$(git rev-parse --short HEAD)
     - aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 227656652879.dkr.ecr.eu-central-1.amazonaws.com
 
 build:
@@ -32,11 +32,9 @@ build:
     - echo Running MVN INSTALL...
     - mvn install
     - echo Building the Docker image...
-#    - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG .
-#    - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
-#    - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$COMMIT_ID
-    - docker build -t stockinfo .
-    - docker tag stockinfo:latest 227656652879.dkr.ecr.eu-central-1.amazonaws.com/stockinfo:latest
+    - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG .
+    - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
+    - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$COMMIT_ID
 
 post_build:
   commands:
@@ -45,9 +43,9 @@ post_build:
     - echo AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
     - echo IMAGE_REPO_NAME: $IMAGE_REPO_NAME
     - echo IMAGE_TAG: $IMAGE_TAG
-#    - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
-#    - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$COMMIT_ID
-    - docker push 227656652879.dkr.ecr.eu-central-1.amazonaws.com/stockinfo:latest
+    - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
+    - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$COMMIT_ID
+
 cache:
   paths:
     - '/root/.m2/**/*'
