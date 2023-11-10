@@ -24,7 +24,6 @@ phases:
       - chmod +x ./kubectl ./aws-iam-authenticator
       - export PATH=$PWD/:$PATH
       - apt-get update && apt-get -y install jq python3-pip python3-dev && pip3 install --upgrade awscli
-      - pip install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org boto3
 
 pre_build:
   commands:
@@ -34,12 +33,12 @@ pre_build:
 
 build:
   commands:
-    - echo Running MVN INSTALL...
-    - mvn install
+#    - echo Running MVN INSTALL...
+#    - mvn install
     - echo Building the Docker image...
     - docker build -t $ECR_REPO_NAME:$ECR_IMAGE_TAG .
     - docker tag $ECR_REPO_NAME:$ECR_IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO_NAME:$ECR_IMAGE_TAG
-#    - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$COMMIT_ID
+    - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$COMMIT_ID
 
 post_build:
   commands:
@@ -49,7 +48,7 @@ post_build:
     - echo ECR_REPO_NAME: $ECR_REPO_NAME
     - echo ECR_IMAGE_TAG: $ECR_IMAGE_TAG
     - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO_NAME:$ECR_IMAGE_TAG
-#    - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$COMMIT_ID
+    - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO_NAME:$COMMIT_ID
 
 cache:
   paths:
