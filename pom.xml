@@ -15,7 +15,7 @@
     <description>Async API Data Manager</description>
     <properties>
         <java.version>17</java.version>
-        <spring-boot.build-image.skip>true</spring-boot.build-image.skip>
+        <spring-boot.build-image.skip>false</spring-boot.build-image.skip>
         <org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
         <lombok.mapstruct.binding.version>0.2.0</lombok.mapstruct.binding.version>
         <jackson.version>2.15.2</jackson.version>
