@@ -1,0 +1,5 @@
+com\griddynamics\stockinfo\BaseAbstractTest.class
+com\griddynamics\stockinfo\client\ExApiExchangeClientImplTest.class
+com\griddynamics\stockinfo\service\DataProcessingServiceTest.class
+com\griddynamics\stockinfo\service\AnaliticServiceTest.class
+com\griddynamics\stockinfo\service\JobsTest.class
